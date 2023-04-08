@@ -5,7 +5,7 @@ import { Button, Box, Container, Typography } from '@material-ui/core';
 import { PATH_HOME } from '../../routes/paths';
 //
 import { varFadeInDown, varFadeInUp, MotionInView } from '../animate';
-
+import Accordion from '../../views/uikit-components/accordion/Simple';
 // ----------------------------------------------------------------------
 
 const ContentStyle = styled('div')(({ theme }) => ({
@@ -28,32 +28,27 @@ const ContentStyle = styled('div')(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function LandingAdvertisement() {
+  const ACCORDIONS = [...Array(4)].map((_, index) => {
+    const setIndex = index + 1;
+    return {
+      value: `panel${setIndex}`,
+      heading: `Accordion${setIndex}`,
+      subHeading: `subHeading${setIndex}`,
+      detail: `detail${setIndex}`
+    };
+  });
   return (
     <Container maxWidth="lg">
+      <MotionInView variants={varFadeInDown}>
+        <Typography variant="h2">FAQ's</Typography>
+      </MotionInView>
       <ContentStyle>
-        <MotionInView
-          variants={varFadeInUp}
-          sx={{
-            mb: { xs: 3, md: 0 }
-          }}
-        >
-          <Box
-            component="img"
-            alt="rocket"
-            src="/static/home/rocket.png"
-            sx={{
-              maxWidth: 460,
-              transform: {
-                xs: 'translateX(-18%)',
-                md: 'translateX(0)'
-              }
-            }}
-          />
-        </MotionInView>
-
         <Box
           sx={{
+            width: '100%',
             pl: { md: 10 },
+            mt: { md: 10 },
+            pr: { md: 10 },
             textAlign: { xs: 'center', md: 'left' }
           }}
         >
@@ -61,27 +56,7 @@ export default function LandingAdvertisement() {
             variants={varFadeInDown}
             sx={{ color: 'common.white', mb: 5 }}
           >
-            <Typography variant="h2">
-              Get started with
-              <br /> Software Factory today
-            </Typography>
-          </MotionInView>
-          <MotionInView variants={varFadeInDown}>
-            <Button
-              size="large"
-              variant="contained"
-              target="_blank"
-              href={PATH_HOME.purchase}
-              sx={{
-                boxShadow: (theme) => theme.customShadows.z8,
-                color: (theme) =>
-                  theme.palette.getContrastText(theme.palette.common.white),
-                bgcolor: 'common.white',
-                '&:hover': { bgcolor: 'grey.300' }
-              }}
-            >
-              Purchase Now
-            </Button>
+            <Accordion accordions={ACCORDIONS} />
           </MotionInView>
         </Box>
       </ContentStyle>

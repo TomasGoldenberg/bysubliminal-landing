@@ -19,7 +19,7 @@ export default function Simple({ accordions }) {
   return (
     <>
       {accordions.map((accordion, index) => (
-        <Accordion key={accordion.value} disabled={index === 3}>
+        <Accordion key={accordion.value}>
           <AccordionSummary
             expandIcon={
               <Icon icon={arrowIosDownwardFill} width={20} height={20} />

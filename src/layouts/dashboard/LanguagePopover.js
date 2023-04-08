@@ -13,7 +13,7 @@ export default function LanguagePopover() {
   const anchorRef = useRef(null);
   const [open, setOpen] = useState(false);
   const { allLang, currentLang, onChangeLang } = useLocales();
-
+  console.log(currentLang);
   return (
     <>
       <MIconButton
@@ -26,7 +26,7 @@ export default function LanguagePopover() {
           ...(open && { bgcolor: 'action.selected' })
         }}
       >
-        <img src={currentLang.icon} alt={currentLang.label} />
+        <img src={currentLang?.icon} alt={currentLang?.label} />
       </MIconButton>
 
       <MenuPopover
@@ -38,7 +38,7 @@ export default function LanguagePopover() {
           {allLang.map((option) => (
             <MenuItem
               key={option.value}
-              selected={option.value === currentLang.value}
+              selected={option.value === currentLang?.value}
               onClick={() => {
                 onChangeLang(option.value);
                 setOpen(false);
