@@ -9,7 +9,8 @@ import {
   LandingDarkMode,
   LandingAdvertisement,
   LandingCleanInterfaces,
-  LandingHugePackElements
+  LandingHugePackElements,
+  Contact
 } from '../components/landing-page';
 
 // ----------------------------------------------------------------------
@@ -39,6 +40,7 @@ export default function LandingPage() {
         <LandingDarkMode />
         <LandingCleanInterfaces />
         <LandingAdvertisement />
+        <Contact />
         <LandingFooter />
       </ContentStyle>
     </RootStyle>
