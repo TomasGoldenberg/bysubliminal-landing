@@ -29,7 +29,7 @@ export default function Settings() {
       <Box
         sx={{
           position: 'fixed',
-          bottom: { xs: 16, sm: 24, md: 32 },
+          bottom: { xs: 74, sm: 74, md: 76 },
           right: { xs: 16, sm: 24, md: 32 },
           zIndex: 999
         }}

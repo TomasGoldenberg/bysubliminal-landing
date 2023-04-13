@@ -13,7 +13,8 @@ import {
   LandingCleanInterfaces,
   LandingHugePackElements,
   Contact,
-  SoftwareDevelopmentLifeCicle
+  SoftwareDevelopmentLifeCicle,
+  CalendlyEmbed
 } from '../components/landing-page';
 import { firebaseConfig } from '../config';
 
@@ -43,6 +44,7 @@ export default function LandingPage() {
       <LandingHero />
       <ContentStyle>
         <LandingMinimal />
+        <CalendlyEmbed />
         <LandingHugePackElements />
         <LandingDarkMode />
         <LandingCleanInterfaces />
