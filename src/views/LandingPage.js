@@ -1,4 +1,6 @@
 // material
+// Import the functions you need from the SDKs you need
+import firebase from 'firebase/app';
 import { experimentalStyled as styled } from '@material-ui/core/styles';
 // components
 import Page from '../components/Page';
@@ -10,9 +12,14 @@ import {
   LandingAdvertisement,
   LandingCleanInterfaces,
   LandingHugePackElements,
-  Contact
+  Contact,
+  SoftwareDevelopmentLifeCicle
 } from '../components/landing-page';
+import { firebaseConfig } from '../config';
 
+// Initialize Firebase
+const app = firebase.initializeApp(firebaseConfig);
+console.log(app);
 // ----------------------------------------------------------------------
 
 const RootStyle = styled(Page)({
@@ -30,7 +37,7 @@ const ContentStyle = styled('div')(({ theme }) => ({
 export default function LandingPage() {
   return (
     <RootStyle
-      title="The starting point for your next project | Software Factory"
+      title="The starting point for your next project | BySubliminal"
       id="move_top"
     >
       <LandingHero />
@@ -39,6 +46,7 @@ export default function LandingPage() {
         <LandingHugePackElements />
         <LandingDarkMode />
         <LandingCleanInterfaces />
+        <SoftwareDevelopmentLifeCicle />
         <LandingAdvertisement />
         <Contact />
         <LandingFooter />

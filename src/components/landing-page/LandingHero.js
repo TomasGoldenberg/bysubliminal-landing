@@ -82,7 +82,7 @@ export default function LandingHero() {
 
         <HeroImgStyle
           alt="hero"
-          src="/static/home/hero.png"
+          src="https://i.ibb.co/ncNvwTH/unnamed.jpg"
           variants={varFadeInUp}
         />
 
@@ -143,7 +143,14 @@ export default function LandingHero() {
                 variant="contained"
                 component={RouterLink}
                 to={PATH_DASHBOARD.root}
-                startIcon={<Icon icon={flashFill} width={20} height={20} />}
+                startIcon={
+                  <img
+                    alt="icon logo"
+                    src="https://i.ibb.co/bFbQ3Mt/Logo-transparent-11-Artboard-9.png"
+                    width={20}
+                    height={20}
+                  />
+                }
               >
                 Get in touch
               </Button>

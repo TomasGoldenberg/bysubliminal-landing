@@ -12,6 +12,7 @@ import {
 } from '@material-ui/core';
 //
 import { QuillEditor } from '../editor';
+import { postContactMessage } from '../../api/contact';
 
 // ----------------------------------------------------------------------
 
@@ -23,17 +24,25 @@ Contact.propTypes = {
 export default function Contact() {
   const NewBlogSchema = Yup.object().shape({
     company_name: Yup.string().required('Name is required'),
-    description: Yup.string().required('Description is required')
+    email: Yup.string()
+      .email('Invalid Email format')
+      .required('Email is required')
   });
   const formik = useFormik({
     initialValues: {
       company_name: '',
+      email: '',
       description: ''
     },
     validationSchema: NewBlogSchema,
     onSubmit: async (values, { setSubmitting, resetForm, setErrors }) => {
       try {
         console.log(values);
+        await postContactMessage(
+          values.company_name,
+          values.email,
+          values.description
+        );
         resetForm();
 
         setSubmitting(false);
@@ -54,7 +63,6 @@ export default function Contact() {
     setFieldValue,
     getFieldProps
   } = formik;
-  console.log(errors, touched, values);
   return (
     <Grid xs={12} sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
       <FormikProvider value={formik}>
@@ -64,7 +72,7 @@ export default function Contact() {
             variant="subtitle2"
             sx={{ color: 'text.secondary' }}
           >
-            Lets talk how to make real your idea !
+            Lets talk about how to make your idea a reality!
           </Typography>
           <TextField
             fullWidth
@@ -72,6 +80,14 @@ export default function Contact() {
             {...getFieldProps('company_name')}
             error={Boolean(touched.company_name && errors.company_name)}
             helperText={touched.company_name && errors.company_name}
+            sx={{ mb: 3 }}
+          />
+          <TextField
+            fullWidth
+            label="Work Email"
+            {...getFieldProps('email')}
+            error={Boolean(touched.email && errors.email)}
+            helperText={touched.email && errors.email}
             sx={{ mb: 3 }}
           />
 
@@ -102,7 +118,7 @@ export default function Contact() {
           <Box sx={{ mt: 3, display: 'flex', justifyContent: 'flex-end' }}>
             <LoadingButton
               type="submit"
-              disabled={!values.company_name || !values.description}
+              disabled={!values.company_name || !values.email}
               variant="contained"
               pending={isSubmitting}
             >

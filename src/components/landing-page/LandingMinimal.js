@@ -19,7 +19,7 @@ import { varFadeInUp, MotionInView, varFadeInDown } from '../animate';
 
 const CARDS = [
   {
-    icon: '/static/brand/logo_single.svg',
+    icon: 'https://i.ibb.co/bFbQ3Mt/Logo-transparent-11-Artboard-9.png',
     title: 'AI SaaS Tools',
     description:
       'We develop AI Powered SaaS Products to improve your buisiness capabilities.'
@@ -93,8 +93,8 @@ const CardStyle = styled(Card)(({ theme }) => {
 });
 
 const CardIconStyle = styled('img')(({ theme }) => ({
-  width: 40,
-  height: 40,
+  width: 70,
+  height: 70,
   margin: 'auto',
   marginBottom: theme.spacing(10),
   filter: shadowIcon(theme.palette.primary.main)

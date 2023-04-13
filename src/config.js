@@ -1,12 +1,17 @@
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 export const firebaseConfig = {
-  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-  databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
-  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.REACT_APP_FIREBASE_APPID,
-  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
+  apiKey: 'AIzaSyBRQ56dyzvgxbizLZNMiZYnui5sP_i9Mhs',
+  authDomain: 'bysubliminal-d5f66.firebaseapp.com',
+  databaseURL: 'https://bysubliminal-d5f66-default-rtdb.firebaseio.com',
+  projectId: 'bysubliminal-d5f66',
+  storageBucket: 'bysubliminal-d5f66.appspot.com',
+  messagingSenderId: '1030330233104',
+  appId: '1:1030330233104:web:cb7c1d76ad27083d847595',
+  measurementId: 'G-MR50DFGTHT'
 };
 
 export const cloudinaryConfig = {

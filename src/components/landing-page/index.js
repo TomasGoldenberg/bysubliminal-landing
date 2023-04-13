@@ -6,3 +6,4 @@ export { default as LandingHero } from './LandingHero';
 export { default as LandingHugePackElements } from './LandingHugePackElements';
 export { default as LandingMinimal } from './LandingMinimal';
 export { default as Contact } from './Contact';
+export { default as SoftwareDevelopmentLifeCicle } from './SoftwareDevelopmentLifeCicle';
