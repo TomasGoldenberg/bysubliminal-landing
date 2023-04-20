@@ -34,13 +34,14 @@ export default function LandingCleanInterfaces() {
               variant="overline"
               sx={{ color: 'text.secondary', display: 'block' }}
             >
-              clean & clear
+              Web & Mobile Development
             </Typography>
           </MotionInView>
 
           <MotionInView variants={varFadeInUp}>
             <Typography variant="h2" paragraph>
-              Beautiful, Modern and Clean User Interfaces
+              We deliver scalable, robust, secure developments for startups,
+              small and mid-size businesses.
             </Typography>
           </MotionInView>
         </ContentStyle>

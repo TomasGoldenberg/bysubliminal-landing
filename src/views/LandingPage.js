@@ -14,7 +14,8 @@ import {
   LandingHugePackElements,
   Contact,
   SoftwareDevelopmentLifeCicle,
-  CalendlyEmbed
+  CalendlyEmbed,
+  About
 } from '../components/landing-page';
 import { firebaseConfig } from '../config';
 
@@ -35,6 +36,7 @@ const ContentStyle = styled('div')(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
+// nameserver 127.0.0.53 /etc/resolv.conf
 export default function LandingPage() {
   return (
     <RootStyle
@@ -44,12 +46,13 @@ export default function LandingPage() {
       <LandingHero />
       <ContentStyle>
         <LandingMinimal />
-        <CalendlyEmbed />
         <LandingHugePackElements />
         <LandingDarkMode />
         <LandingCleanInterfaces />
         <SoftwareDevelopmentLifeCicle />
         <LandingAdvertisement />
+        <About />
+        <CalendlyEmbed />
         <Contact />
         <LandingFooter />
       </ContentStyle>

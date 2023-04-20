@@ -25,7 +25,9 @@ export default function Simple({ accordions }) {
               <Icon icon={arrowIosDownwardFill} width={20} height={20} />
             }
           >
-            <Typography variant="subtitle1">{accordion.heading}</Typography>
+            <Typography variant="subtitle1">
+              {accordion.heading?.toUpperCase()}
+            </Typography>
           </AccordionSummary>
           <AccordionDetails>
             <Typography>{accordion.detail}</Typography>

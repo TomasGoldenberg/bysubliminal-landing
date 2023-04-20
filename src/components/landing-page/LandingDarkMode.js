@@ -66,7 +66,7 @@ export default function LandingDarkMode() {
                   variant="overline"
                   sx={{ color: 'text.disabled', display: 'block' }}
                 >
-                  Easy switch between styles.
+                  AI SaaS Tools
                 </Typography>
               </MotionInView>
 
@@ -75,7 +75,8 @@ export default function LandingDarkMode() {
                 sx={{ color: 'common.white' }}
               >
                 <Typography variant="h2" paragraph>
-                  Dark Mode
+                  We help companies and entrepreneurs implement AI tools to
+                  empower the way they manage their business
                 </Typography>
               </MotionInView>
 
@@ -84,12 +85,9 @@ export default function LandingDarkMode() {
                 sx={{ color: 'common.white', mb: 5 }}
               >
                 <Typography>
-                  A dark theme that feels easier on the eyes.
+                  SaaS powered by Ai Tools are a great way of adding real value
+                  to your business value proposal.
                 </Typography>
-              </MotionInView>
-
-              <MotionInView variants={varFadeInRight}>
-                <Switch onChange={toggleMode} checked={!isLight} />
               </MotionInView>
             </ContentStyle>
           </Grid>

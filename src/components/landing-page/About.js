@@ -22,6 +22,7 @@ import { varFadeInUp, MotionInView, varFadeInRight } from '../animate';
 
 const RootStyle = styled('div')(({ theme }) => ({
   padding: theme.spacing(15, 0),
+  marginTop: '80px',
   backgroundImage:
     theme.palette.mode === 'light'
       ? `linear-gradient(180deg, ${alpha(theme.palette.grey[300], 0)} 0%, ${
@@ -102,20 +103,26 @@ export default function LandingHugePackElements() {
                   variant="overline"
                   sx={{ color: 'text.secondary', display: 'block' }}
                 >
-                  specialized Product Design
+                  Best IT Partner
                 </Typography>
               </MotionInView>
 
               <MotionInView variants={textAnimate}>
-                <Typography variant="h2" paragraph>
-                  Rise the quality of your buisiness to the next level
+                <Typography variant="h4" paragraph>
+                  BySubliminal is a technical partner for building web-based and
+                  mobile app products. Should they be scaled-up or developed
+                  from scratch - we will handle it.
                 </Typography>
               </MotionInView>
 
               <MotionInView variants={textAnimate}>
                 <Typography sx={{ color: 'text.secondary' }}>
-                  We translate our clients complex projects and ideas into user
-                  friendly platforms with clean interfaces.
+                  At Subliminal, we are passionate about delivering high-quality
+                  software and SaaS solutions to businesses of all industries.
+                  Our experienced team of developers takes a personalized
+                  approach to each project, working closely with clients to
+                  understand their unique needs and develop solutions that meet
+                  those needs
                 </Typography>
               </MotionInView>
             </ContentStyle>
@@ -159,7 +166,7 @@ export default function LandingHugePackElements() {
                 <Box
                   component="img"
                   alt={`screen ${index + 1}`}
-                  src={`/static/home/screen_${isLight ? 'light' : 'dark'}_${
+                  src={`https://images.unsplash.com/photo-1570126618953-d437176e8c79?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=794&q=80'}_${
                     index + 1
                   }.png`}
                   sx={{ width: { xs: '80%', sm: '100%' } }}

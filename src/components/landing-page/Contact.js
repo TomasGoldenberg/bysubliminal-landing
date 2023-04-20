@@ -8,11 +8,19 @@ import {
   Grid,
   TextField,
   Typography,
-  FormHelperText
+  Avatar,
+  FormHelperText,
+  useTheme
 } from '@material-ui/core';
+import { Icon } from '@iconify/react';
+import shareFill from '@iconify/icons-eva/share-fill';
+import infoFill from '@iconify/icons-eva/info-fill';
+import heartFill from '@iconify/icons-eva/heart-fill';
+import personFill from '@iconify/icons-eva/person-fill';
 //
 import { QuillEditor } from '../editor';
 import { postContactMessage } from '../../api/contact';
+import useSettings from '../../hooks/useSettings';
 
 // ----------------------------------------------------------------------
 
@@ -21,7 +29,17 @@ Contact.propTypes = {
   onOpenPreview: PropTypes.func
 };
 
+const STEPS = [
+  { icon: shareFill, text: 'Share your Idea' },
+  { icon: personFill, text: 'Discuss it with our expert' },
+  { icon: infoFill, text: 'Get an estimation of a project' },
+  { icon: heartFill, text: 'Start the project' }
+];
+
 export default function Contact() {
+  const theme = useTheme();
+  const { themeMode } = useSettings();
+  const isLight = themeMode === 'light';
   const NewBlogSchema = Yup.object().shape({
     company_name: Yup.string().required('Name is required'),
     email: Yup.string()
@@ -64,69 +82,109 @@ export default function Contact() {
     getFieldProps
   } = formik;
   return (
-    <Grid xs={12} sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
-      <FormikProvider value={formik}>
-        <Form noValidate autoComplete="off" onSubmit={handleSubmit}>
-          <Typography
-            gutterBottom
-            variant="subtitle2"
-            sx={{ color: 'text.secondary' }}
+    <Grid
+      container
+      xs={12}
+      sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}
+    >
+      <Grid xs={2} item sx={{ display: 'flex', flexDirection: 'column' }}>
+        {STEPS.map((step, index) => (
+          <Box
+            key={step.text}
+            sx={{ display: 'flex', justifyContent: 'space-around' }}
           >
-            Lets talk about how to make your idea a reality!
-          </Typography>
-          <TextField
-            fullWidth
-            label="Company name"
-            {...getFieldProps('company_name')}
-            error={Boolean(touched.company_name && errors.company_name)}
-            helperText={touched.company_name && errors.company_name}
-            sx={{ mb: 3 }}
-          />
-          <TextField
-            fullWidth
-            label="Work Email"
-            {...getFieldProps('email')}
-            error={Boolean(touched.email && errors.email)}
-            helperText={touched.email && errors.email}
-            sx={{ mb: 3 }}
-          />
-
-          <Typography
-            gutterBottom
-            variant="subtitle2"
-            sx={{ color: 'text.secondary' }}
-          >
-            Describe your project and book a meeting with one of our consultants
-          </Typography>
-
-          <QuillEditor
-            id="post-content"
-            value={values.description}
-            onChange={(val) => setFieldValue('description', val)}
-            error={Boolean(touched.description && errors.description)}
-          />
-          <FormHelperText error sx={{ px: 2 }}>
-            {touched.content && errors.content}
-          </FormHelperText>
-
-          <Box sx={{ mb: 3 }} />
-
-          <FormHelperText error sx={{ px: 2 }}>
-            {touched.cover && errors.cover}
-          </FormHelperText>
-
-          <Box sx={{ mt: 3, display: 'flex', justifyContent: 'flex-end' }}>
-            <LoadingButton
-              type="submit"
-              disabled={!values.company_name || !values.email}
-              variant="contained"
-              pending={isSubmitting}
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                flexDirection: 'column'
+              }}
             >
-              Post
-            </LoadingButton>
+              <Avatar
+                sx={{ bgcolor: theme.palette.primary.main, color: 'black' }}
+              >
+                <Icon icon={step.icon} />
+              </Avatar>
+              {index !== STEPS.length - 1 && (
+                <div
+                  style={{
+                    background: theme.palette.primary.main,
+                    width: '2px',
+                    height: '100px'
+                  }}
+                />
+              )}
+            </div>
+            <Typography sx={{ width: '230px' }}>{step.text}</Typography>
           </Box>
-        </Form>
-      </FormikProvider>
+        ))}
+      </Grid>
+      <Grid xs={10} item>
+        <FormikProvider value={formik}>
+          <Form noValidate autoComplete="off" onSubmit={handleSubmit}>
+            <Typography
+              gutterBottom
+              variant="subtitle2"
+              sx={{ color: 'text.secondary' }}
+            >
+              Lets talk about how to make your idea a reality!
+            </Typography>
+            <TextField
+              fullWidth
+              label="Company name"
+              {...getFieldProps('company_name')}
+              error={Boolean(touched.company_name && errors.company_name)}
+              helperText={touched.company_name && errors.company_name}
+              sx={{ mb: 3 }}
+            />
+            <TextField
+              fullWidth
+              label="Work Email"
+              {...getFieldProps('email')}
+              error={Boolean(touched.email && errors.email)}
+              helperText={touched.email && errors.email}
+              sx={{ mb: 3 }}
+            />
+
+            <Typography
+              gutterBottom
+              variant="subtitle2"
+              sx={{ color: 'text.secondary' }}
+            >
+              Describe your project and book a meeting with one of our
+              consultants
+            </Typography>
+
+            <QuillEditor
+              id="post-content"
+              value={values.description}
+              onChange={(val) => setFieldValue('description', val)}
+              error={Boolean(touched.description && errors.description)}
+            />
+            <FormHelperText error sx={{ px: 2 }}>
+              {touched.content && errors.content}
+            </FormHelperText>
+
+            <Box sx={{ mb: 3 }} />
+
+            <FormHelperText error sx={{ px: 2 }}>
+              {touched.cover && errors.cover}
+            </FormHelperText>
+
+            <Box sx={{ mt: 3, display: 'flex', justifyContent: 'flex-end' }}>
+              <LoadingButton
+                type="submit"
+                disabled={!values.company_name || !values.email}
+                variant="contained"
+                pending={isSubmitting}
+              >
+                Post
+              </LoadingButton>
+            </Box>
+          </Form>
+        </FormikProvider>
+      </Grid>
     </Grid>
   );
 }

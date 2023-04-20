@@ -8,3 +8,4 @@ export { default as LandingMinimal } from './LandingMinimal';
 export { default as Contact } from './Contact';
 export { default as SoftwareDevelopmentLifeCicle } from './SoftwareDevelopmentLifeCicle';
 export { default as CalendlyEmbed } from './CalendlyEmbed';
+export { default as About } from './About';
