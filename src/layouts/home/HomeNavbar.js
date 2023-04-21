@@ -34,9 +34,8 @@ import MenuPopover from '../../components/MenuPopover';
 
 const MENU_LINKS = [
   { title: 'Home', icon: homeFill, href: '/' },
-  { title: 'Components', icon: roundStreetview, href: PATH_HOME.components },
-  { title: 'Dashboard', icon: roundSpeed, href: PATH_HOME.dashboard },
-  { title: 'Documentation', icon: bookOpenFill, href: PATH_DOCS.root }
+  { title: 'Services', icon: roundStreetview, href: PATH_HOME.services },
+  { title: 'FAQS', icon: bookOpenFill, href: '/' }
 ];
 
 const APP_BAR_MOBILE = 64;
@@ -173,8 +172,8 @@ export default function HomeNavbar() {
 
           <Hidden mdDown>{renderMenuDesktop}</Hidden>
 
-          <Button variant="contained" target="_blank" href={PATH_HOME.purchase}>
-            Purchase Now
+          <Button variant="contained" target="_blank">
+            Get in Touch !
           </Button>
 
           <Hidden mdUp>

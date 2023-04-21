@@ -16,8 +16,8 @@ const HomeRoutes = {
     },
     {
       exact: true,
-      path: '/components',
-      component: lazy(() => import('../views/ComponentsOverview'))
+      path: '/services',
+      component: lazy(() => import('../views/Services'))
     },
 
     // ----------------------------------------------------------------------
