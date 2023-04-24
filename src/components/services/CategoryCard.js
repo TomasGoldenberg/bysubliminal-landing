@@ -81,6 +81,7 @@ const CardIconStyle = styled('img')(({ theme }) => ({
 
 export default function CategoryCard({ category }) {
   const theme = useTheme();
+
   const isDesktop = useMediaQuery(theme.breakpoints.up('lg'));
 
   return (
@@ -156,7 +157,11 @@ export default function CategoryCard({ category }) {
             }}
           >
             {category.products.map((product) => (
-              <ServiceCard key={product.name} user={product} />
+              <ServiceCard
+                categoryId={category.id}
+                key={product.name}
+                product={product}
+              />
             ))}
           </Grid>
         </Grid>

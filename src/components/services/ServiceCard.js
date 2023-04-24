@@ -5,6 +5,8 @@ import linkedinFill from '@iconify/icons-eva/linkedin-fill';
 import facebookFill from '@iconify/icons-eva/facebook-fill';
 import instagramFilled from '@iconify/icons-ant-design/instagram-filled';
 // material
+import { useHistory } from 'react-router-dom';
+
 import { alpha, experimentalStyled as styled } from '@material-ui/core/styles';
 import {
   Box,
@@ -20,7 +22,9 @@ import {
 import { fShortenNumber } from '../../utils/formatNumber';
 //
 import SvgIconStyle from '../SvgIconStyle';
+import { PATH_HOME } from '../../routes/paths';
 
+import { replaceParams } from '../../utils/url';
 // ----------------------------------------------------------------------
 
 const SOCIALS = [
@@ -91,7 +95,7 @@ ServiceCard.propTypes = {
   user: PropTypes.object.isRequired
 };
 
-export default function ServiceCard({ user, ...other }) {
+export default function ServiceCard({ product, categoryId, ...other }) {
   const {
     name,
     cover,
@@ -100,10 +104,25 @@ export default function ServiceCard({ user, ...other }) {
     totalPost,
     avatarUrl,
     following
-  } = user;
+  } = product;
+  const history = useHistory();
 
   return (
-    <Card sx={{ width: '22%' }} {...other}>
+    <Card
+      sx={{ width: '22%' }}
+      {...other}
+      onClick={() => {
+        history.push(
+          replaceParams(
+            [
+              { label: ':categoryId', value: categoryId },
+              { label: ':productId', value: product.id }
+            ],
+            PATH_HOME.serviceItemDetail
+          )
+        );
+      }}
+    >
       <CardMediaStyle>
         <SvgIconStyle
           color="paper"

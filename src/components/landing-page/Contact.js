@@ -120,7 +120,7 @@ export default function Contact() {
           </Box>
         ))}
       </Grid>
-      <Grid xs={10} item>
+      <Grid xs={8} item>
         <FormikProvider value={formik}>
           <Form noValidate autoComplete="off" onSubmit={handleSubmit}>
             <Typography
@@ -172,9 +172,10 @@ export default function Contact() {
               {touched.cover && errors.cover}
             </FormHelperText>
 
-            <Box sx={{ mt: 3, display: 'flex', justifyContent: 'flex-end' }}>
+            <Box sx={{ mt: 3, display: 'flex', justifyContent: 'center' }}>
               <LoadingButton
                 type="submit"
+                fullWidth
                 disabled={!values.company_name || !values.email}
                 variant="contained"
                 pending={isSubmitting}
