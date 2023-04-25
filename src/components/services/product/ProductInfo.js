@@ -30,18 +30,7 @@ export default function ProductInfo({ product }) {
           <CardHeader title="About" />
 
           <CardContent>
-            <Typography variant="body2">
-              aca va la continuacion del texto de la card grande de la seccion
-              anterior aca va la continuacion del texto de la card grande de la
-              seccion anterior aca va la continuacion del texto de la card
-              grande de la seccion anterior aca va la continuacion del texto de
-              la card grande de la seccion anterior aca va la continuacion del
-              texto de la card grande de la seccion anterior aca va la
-              continuacion del texto de la card grande de la seccion anterior{' '}
-              aca va la continuacion del texto de la card grande de la seccion
-              anterior aca va la continuacion del texto de la card grande de la
-              seccion anterior{' '}
-            </Typography>
+            <Typography variant="body2">{product.description}</Typography>
           </CardContent>
         </Card>
       </Grid>

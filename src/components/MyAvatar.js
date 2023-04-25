@@ -6,12 +6,12 @@ import createAvatar from '../utils/createAvatar';
 
 // ----------------------------------------------------------------------
 
-export default function MyAvatar({ ...other }) {
+export default function MyAvatar({ src, ...other }) {
   const { user } = useAuth();
 
   return (
     <MAvatar
-      src={user.photoURL}
+      src={src || user.photoURL}
       alt={user.displayName}
       color={user.photoURL ? 'default' : createAvatar(user.displayName).color}
       {...other}

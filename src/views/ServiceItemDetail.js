@@ -25,18 +25,97 @@ import useAuth from '../hooks/useAuth';
 // components
 import Page from '../components/Page';
 import HeaderDashboard from '../components/HeaderDashboard';
-import {
-  Profile,
-  ProfileCover,
-  ProfileFriends,
-  ProfileGallery,
-  ProfileFollowers
-} from '../components/user/profile';
+
 import ProductInfo from '../components/services/product/ProductInfo';
 import ProductDetails from '../components/services/product/ProductDetails';
 import ProductExamples from '../components/services/product/ProductExamples';
+import ProductCover from '../components/services/product/ProductCover';
 
 // ----------------------------------------------------------------------
+
+const PRODUCTS = {
+  'frontend-development': {
+    id: 'frontent-development',
+    title: 'Frontend Development',
+    subtitle: 'Test Driven Development',
+    cover: '/static/mock-images/covers/cover_1.jpg',
+    avatar: 'https://i.ibb.co/bFbQ3Mt/Logo-transparent-11-Artboard-9.png',
+    about: {
+      quote: 'algo',
+      country: 'algo',
+      email: 'algo',
+      role: 'algo',
+      company: 'algo',
+      school: 'algo',
+      description:
+        '  aca va la continuacion del texto de la card grande de la seccion anterior, aca va la continuacion del texto de la card grande de la seccion anterior,aca va la continuacion del texto de la card grande de la seccion anterior,aca va la continuacion del texto de la card grande de la seccion anterior,aca va la continuacion del texto de la card grande de la seccion anterior,aca va la continuacion del texto de la card grande de la seccion anterior'
+    },
+    benefits: [
+      {
+        avatarUrl: '/static/mock-images/avatars/avatar_2.jpg',
+        id: 'fc68bad5-d430-4033-b8f8-4bc069dc0ba0-2',
+        name: 'Clean interfaces increase convertion',
+        role:
+          'This is because a psicological fact that make us take decitions having detailes info'
+      },
+      {
+        avatarUrl: '/static/mock-images/avatars/avatar_3.jpg',
+        id: 'fc68bad5-d430-4033-b8f8-4bc069dc0ba0-3',
+        name: 'Clean interfaces increase convertion',
+        role:
+          'This is because a psicological fact that make us take decitions having detailes info'
+      },
+      {
+        avatarUrl: '/static/mock-images/avatars/avatar_4.jpg',
+        id: 'fc68bad5-d430-4033-b8f8-4bc069dc0ba0-4',
+        name: 'Clean interfaces increase convertion',
+        role:
+          'This is because a psicological fact that make us take decitions having detailes info'
+      },
+      {
+        avatarUrl: '/static/mock-images/avatars/avatar_2.jpg',
+        id: 'fc68bad5-d430-4033-b8f8-4bc069dc0ba0-5',
+        name: 'Clean interfaces increase convertion',
+        role:
+          'This is because a psicological fact that make us take decitions having detailes info'
+      },
+      {
+        avatarUrl: '/static/mock-images/avatars/avatar_2.jpg',
+        id: 'fc68bad5-d430-4033-b8f8-4bc069dc0ba0-6',
+        name: 'Clean interfaces increase convertion',
+        role:
+          'This is because a psicological fact that make us take decitions having detailes info'
+      },
+      {
+        avatarUrl: '/static/mock-images/avatars/avatar_2.jpg',
+        id: 'fc68bad5-d430-4033-b8f8-4bc069dc0ba0-7',
+        name: 'Clean interfaces increase convertion',
+        role:
+          'This is because a psicological fact that make us take decitions having detailes info'
+      }
+    ],
+    examples: [
+      {
+        id: 'fc68bad5-d430-4033-b8f8-4bc069dc0ba0-3',
+        imageUrl: '/static/mock-images/covers/cover_3.jpg',
+        postAt: '2022-08-24T19:59:25.307Z',
+        title: 'Principal Metrics Facilitator'
+      },
+      {
+        id: 'fc68bad5-d430-4033-b8f8-4bc069dc0ba0-4',
+        imageUrl: '/static/mock-images/covers/cover_4.jpg',
+        postAt: '2022-08-24T19:59:25.307Z',
+        title: 'Principal Metrics Facilitator'
+      },
+      {
+        id: 'fc68bad5-d430-4033-b8f8-4bc069dc0ba0-5',
+        imageUrl: '/static/mock-images/covers/cover_5.jpg',
+        postAt: '2022-08-24T19:59:25.307Z',
+        title: 'Principal Metrics Facilitator'
+      }
+    ]
+  }
+};
 
 const TabsWrapperStyle = styled('div')(({ theme }) => ({
   zIndex: 9,
@@ -81,16 +160,16 @@ export default function UserProfile() {
     setFindFriends(event.target.value);
   };
 
-  if (!myProfile) {
-    return null;
-  }
-
   const PROFILE_TABS = [
     {
       value: 'profile',
       icon: <Icon icon={roundAccountBox} width={20} height={20} />,
       component: (
-        <ProductInfo product={myProfile} posts={posts} authUser={user} />
+        <ProductInfo
+          product={PRODUCTS['frontend-development'].about}
+          posts={posts}
+          authUser={user}
+        />
       )
     },
 
@@ -99,50 +178,7 @@ export default function UserProfile() {
       icon: <Icon icon={peopleFill} width={20} height={20} />,
       component: (
         <ProductDetails
-          benefits={[
-            {
-              avatarUrl: '/static/mock-images/avatars/avatar_2.jpg',
-              id: 'fc68bad5-d430-4033-b8f8-4bc069dc0ba0-2',
-              name: 'Clean interfaces increase convertion',
-              role:
-                'This is because a psicological fact that make us take decitions having detailes info'
-            },
-            {
-              avatarUrl: '/static/mock-images/avatars/avatar_3.jpg',
-              id: 'fc68bad5-d430-4033-b8f8-4bc069dc0ba0-3',
-              name: 'Clean interfaces increase convertion',
-              role:
-                'This is because a psicological fact that make us take decitions having detailes info'
-            },
-            {
-              avatarUrl: '/static/mock-images/avatars/avatar_4.jpg',
-              id: 'fc68bad5-d430-4033-b8f8-4bc069dc0ba0-4',
-              name: 'Clean interfaces increase convertion',
-              role:
-                'This is because a psicological fact that make us take decitions having detailes info'
-            },
-            {
-              avatarUrl: '/static/mock-images/avatars/avatar_2.jpg',
-              id: 'fc68bad5-d430-4033-b8f8-4bc069dc0ba0-5',
-              name: 'Clean interfaces increase convertion',
-              role:
-                'This is because a psicological fact that make us take decitions having detailes info'
-            },
-            {
-              avatarUrl: '/static/mock-images/avatars/avatar_2.jpg',
-              id: 'fc68bad5-d430-4033-b8f8-4bc069dc0ba0-6',
-              name: 'Clean interfaces increase convertion',
-              role:
-                'This is because a psicological fact that make us take decitions having detailes info'
-            },
-            {
-              avatarUrl: '/static/mock-images/avatars/avatar_2.jpg',
-              id: 'fc68bad5-d430-4033-b8f8-4bc069dc0ba0-7',
-              name: 'Clean interfaces increase convertion',
-              role:
-                'This is because a psicological fact that make us take decitions having detailes info'
-            }
-          ]}
+          benefits={PRODUCTS['frontend-development'].benefits}
           findFriends={findFriends}
           onFindFriends={handleFindFriends}
         />
@@ -152,41 +188,20 @@ export default function UserProfile() {
       value: 'examples',
       icon: <Icon icon={roundPermMedia} width={20} height={20} />,
       component: (
-        <ProductExamples
-          examples={[
-            {
-              id: 'fc68bad5-d430-4033-b8f8-4bc069dc0ba0-3',
-              imageUrl: '/static/mock-images/covers/cover_3.jpg',
-              postAt: '2022-08-24T19:59:25.307Z',
-              title: 'Principal Metrics Facilitator'
-            },
-            {
-              id: 'fc68bad5-d430-4033-b8f8-4bc069dc0ba0-4',
-              imageUrl: '/static/mock-images/covers/cover_4.jpg',
-              postAt: '2022-08-24T19:59:25.307Z',
-              title: 'Principal Metrics Facilitator'
-            },
-            {
-              id: 'fc68bad5-d430-4033-b8f8-4bc069dc0ba0-5',
-              imageUrl: '/static/mock-images/covers/cover_5.jpg',
-              postAt: '2022-08-24T19:59:25.307Z',
-              title: 'Principal Metrics Facilitator'
-            }
-          ]}
-        />
+        <ProductExamples examples={PRODUCTS['frontend-development'].examples} />
       )
     }
   ];
 
   return (
-    <Page title="User: Profile | Minimal-UI">
+    <Page title="Product Name | BySubliminal">
       <Container>
         <HeaderDashboard
           heading="Profile"
           links={[
             { name: 'Dashboard', href: PATH_DASHBOARD.root },
             { name: 'User', href: PATH_DASHBOARD.user.root },
-            { name: user.displayName }
+            { name: 'Product name' }
           ]}
         />
         <Card
@@ -196,7 +211,10 @@ export default function UserProfile() {
             position: 'relative'
           }}
         >
-          <ProfileCover myProfile={myProfile} authUser={user} />
+          <ProductCover
+            product={PRODUCTS['frontend-development']}
+            authUser={user}
+          />
 
           <TabsWrapperStyle>
             <Tabs
